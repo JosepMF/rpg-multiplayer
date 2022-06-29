@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
         gameThread = new Thread(this);
+
         player = new Player(this, kh, 1);
 
         this.setPreferredSize(panelDimensions);
@@ -69,6 +70,12 @@ public class GamePanel extends JPanel implements Runnable {
         player.update();
     }
 
+    // checking collitions
+
+    private void checkCollitions() {
+        // TODO: set the collitions of the objects and tiles
+    }
+
     /**
      * 
      * this is the game loop of the panel game, iside this,
@@ -95,6 +102,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             if(delta >= 1) {
                 update();
+                checkCollitions();
                 repaint();
                 delta--;
                 drawCount++;

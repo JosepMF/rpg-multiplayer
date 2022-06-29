@@ -36,19 +36,19 @@ public class Player extends SuperPlayer implements ActionPlayer {
     public void update() {
         if (kh.up) {
             y -= speed;
-            r.add(x, y);
+            r.y = y;
         }
         if (kh.down) {
             y += speed;
-            r.add(x, y);
+            r.y = y;
         }
         if (kh.left) {
             x -= speed;
-            r.add(x, y);
+            r.x = x;
         }
         if (kh.right) {
             x += speed;
-            r.add(x, y);
+            r.x = x;
         }
         System.out.println(r.getX() + " " + r.getY());
     }
