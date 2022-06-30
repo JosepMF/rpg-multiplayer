@@ -8,15 +8,18 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import entity.player.Player;
+import map.MapLoader;
 
 public class GamePanel extends JPanel implements Runnable {
-    int rowNumber = 30;
-    int colNumber = 20;
+    public int rowNumber = 30;
+    public int colNumber = 20;
     int scale = 2;
     public int squareSize = 16 * scale;
 
     public int screenWidth = rowNumber * squareSize;
     public int screenHeigth = colNumber * squareSize;
+
+    MapLoader mapLoader;
 
     int FPS = 60;
 
@@ -39,6 +42,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         player = new Player(this, kh, 1);
 
+        mapLoader = new MapLoader(this);
+
         this.setPreferredSize(panelDimensions);
         this.setDoubleBuffered(true);
         this.addKeyListener(kh);
@@ -58,6 +63,8 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+
+        mapLoader.draw(g2);
 
         player.draw(g2);
 
