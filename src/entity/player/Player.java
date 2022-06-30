@@ -50,6 +50,5 @@ public class Player extends SuperPlayer implements ActionPlayer {
             x += speed;
             r.x = x;
         }
-        System.out.println(r.getX() + " " + r.getY());
     }
 }
