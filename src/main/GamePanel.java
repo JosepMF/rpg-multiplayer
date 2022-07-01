@@ -11,13 +11,13 @@ import entity.player.Player;
 import map.MapLoader;
 
 public class GamePanel extends JPanel implements Runnable {
-    public int rowNumber = 30;
-    public int colNumber = 20;
+    public int rowNumber = 20;
+    public int colNumber = 30;
     int scale = 2;
     public int squareSize = 16 * scale;
 
-    public int screenWidth = rowNumber * squareSize;
-    public int screenHeigth = colNumber * squareSize;
+    public int screenWidth = colNumber * squareSize;
+    public int screenHeigth = rowNumber * squareSize;
 
     MapLoader mapLoader;
 
@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
         player = new Player(this, kh, 1);
 
         mapLoader = new MapLoader(this);
+        mapLoader.loadMap();
 
         this.setPreferredSize(panelDimensions);
         this.setDoubleBuffered(true);

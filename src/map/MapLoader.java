@@ -17,26 +17,27 @@ public class MapLoader {
     public MapLoader(GamePanel gp) {
         this.gp = gp;
 
+        mapTileNum = new int[gp.colNumber][gp.rowNumber];
+
         tileLoader = new TileLoader();
-        loadMap();
     }
 
-    private void loadMap() {
+    public void loadMap() {
         try {
-            InputStream is = getClass().getResourceAsStream("./res/map01.txt");
+            InputStream is = getClass().getResourceAsStream("res/map01.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
             int row = 0;
-
+            
             while (col < gp.colNumber && row < gp.rowNumber) {
                 String line = br.readLine();
-
+                
                 while(col < gp.colNumber) {
                     String[] numbers = line.split(" ");
-                    
-                    int num = Integer.parseInt(numbers[col]);
 
+                    int num = Integer.parseInt(numbers[col]);
+                    
                     mapTileNum[col][row] = num;
                     col++;
                 }
@@ -55,14 +56,16 @@ public class MapLoader {
         int y = 0;
         int row = 0;
         int col = 0;
-        while (col < gp.colNumber * 2 && row < gp.rowNumber) {
-            g2.setColor(tileLoader.tiles[0].color);
+        while (col < gp.colNumber && row < gp.rowNumber) {
+            int num = mapTileNum[col][row];
+
+            g2.setColor(tileLoader.tiles[num].color);
             g2.fillRect(x, y, gp.squareSize, gp.squareSize);
 
             x += gp.squareSize;
             col++;
 
-            if (col == gp.colNumber * 2) {
+            if (col == gp.colNumber) {
                 x = 0;
                 col = 0;
                 y += gp.squareSize;
