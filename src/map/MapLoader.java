@@ -64,8 +64,6 @@ public class MapLoader {
         while (worldCol < gp.colWorldNumber && worldRow < gp.rowWorldNumber) {
             int num = mapTileNum[worldCol][worldRow];
 
-            // 17:49
-
             int wx = worldCol * gp.squareSize; // world x
             int wy = worldRow * gp.squareSize; // world y
             int sx = wx - gp.player.worldX + gp.player.screenX; // screen x
