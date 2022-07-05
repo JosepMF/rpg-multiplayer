@@ -9,6 +9,9 @@ import main.GamePanel;
 import main.KeyHandler;
 
 public class Player extends SuperPlayer implements ActionPlayer {
+    public int screenX;
+    public int screenY;
+
     public Player(GamePanel gp, KeyHandler kh, long id) {
         
         this.speed = 3;
@@ -20,35 +23,42 @@ public class Player extends SuperPlayer implements ActionPlayer {
         this.width = gp.squareSize;
         this.height = gp.squareSize;
         
-        this.x = gp.screenWidth / 2 - this.width / 2;
-        this.y = gp.screenHeigth / 2 - this.height / 2;
+        this.worldX = 2;
+        this.worldY = 2;
         
-        this.r = new Rectangle(x - width/2, y - height/2, width/2, height/2);
+        this.screenX = gp.screenWidth / 2 - this.width / 2;
+        this.screenY = gp.screenHeigth / 2 - this.height / 2; 
+
+        this.r = new Rectangle(worldX - width/2, worldY - height/2, width/2, height/2);
     }
     
     @Override
     public void draw(Graphics2D g2) {
         g2.setColor(Color.BLUE);
-        g2.fillRect(x, y, width, height);
+        g2.fillRect(screenX, screenY, width, height);
     }
 
     @Override
     public void update() {
         if (kh.up) {
-            y -= speed;
-            r.y = y;
+            worldY -= speed;
+            direction = "UP";
+            r.y = worldY;
         }
         if (kh.down) {
-            y += speed;
-            r.y = y;
+            worldY += speed;
+            direction = "DOWN";
+            r.y = worldY;
         }
         if (kh.left) {
-            x -= speed;
-            r.x = x;
+            worldX -= speed;
+            direction = "LEFT";
+            r.x = worldX;
         }
         if (kh.right) {
-            x += speed;
-            r.x = x;
+            worldX += speed;
+            direction = "RIGHT";
+            r.x = worldX;
         }
     }
 }

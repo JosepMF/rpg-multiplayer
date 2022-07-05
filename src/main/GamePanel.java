@@ -11,19 +11,28 @@ import entity.player.Player;
 import map.MapLoader;
 
 public class GamePanel extends JPanel implements Runnable {
-    public int rowNumber = 20;
-    public int colNumber = 30;
-    int scale = 2;
-    public int squareSize = 16 * scale;
+    public final int rowNumber = 20;
+    public final int colNumber = 30;
+    private final int scale = 2;
+    public final int squareSize = 16 * scale;
 
-    public int screenWidth = colNumber * squareSize;
-    public int screenHeigth = rowNumber * squareSize;
+    public final int screenWidth = colNumber * squareSize;
+    public final int screenHeigth = rowNumber * squareSize;
 
     MapLoader mapLoader;
 
+    // World settings
+
+    public final int rowWorldNumber = 50;
+    public final int colWorldNumber = 50;
+    public final int worldWith = colWorldNumber * squareSize;
+    public final int worldHeigth = rowWorldNumber * squareSize;
+
+
+    // FPS
     int FPS = 60;
 
-    Player player; // testing player
+    public Player player; // testing player
 
     public KeyHandler kh = new KeyHandler();
 
@@ -110,8 +119,8 @@ public class GamePanel extends JPanel implements Runnable {
 
             if(delta >= 1) {
                 update();
-                checkCollitions();
                 repaint();
+                checkCollitions();
                 delta--;
                 drawCount++;
             }

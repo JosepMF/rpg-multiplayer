@@ -16,8 +16,8 @@ public class Object extends Entity {
         this.id = id;
         this.nameObject = nameObject;
 
-        this.x = x;
-        this.y = y; 
+        this.worldX = x;
+        this.worldY = y; 
 
         this.width = gp.squareSize;
         this.height = gp.squareSize; 
@@ -31,6 +31,6 @@ public class Object extends Entity {
 
     public void draw(Graphics2D g2) {
         g2.setColor(Color.RED);
-        g2.fillRect(x, y, width, height);
+        g2.fillRect(worldX, worldY, width, height);
     }
 }
