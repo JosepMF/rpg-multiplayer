@@ -44,21 +44,33 @@ public class Player extends SuperPlayer implements ActionPlayer {
             worldY -= speed;
             direction = "UP";
             r.y = worldY;
+            if (kh.shift) {
+            	worldY -= speed + 2;
+            }
         }
         if (kh.down) {
             worldY += speed;
             direction = "DOWN";
             r.y = worldY;
+            if (kh.shift) {
+            	worldY += speed + 2;
+            }
         }
         if (kh.left) {
             worldX -= speed;
             direction = "LEFT";
             r.x = worldX;
+            if (kh.shift) {
+            	worldX -= speed + 2;
+            }            
         }
         if (kh.right) {
             worldX += speed;
             direction = "RIGHT";
             r.x = worldX;
+            if (kh.shift) {
+            	worldX += speed + 2;
+            }
         }
     }
 }
