@@ -22,6 +22,8 @@ public class KeyHandler implements KeyListener {
             right = true;
         if (e.getKeyCode() == KeyEvent.VK_A)
             left = true;
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT)
+            shift = true;
         
     }
 
@@ -35,6 +37,8 @@ public class KeyHandler implements KeyListener {
             right = false;
         if (e.getKeyCode() == KeyEvent.VK_A)
             left = false;
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT)
+            shift = false;
     }
     
 }
