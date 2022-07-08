@@ -45,7 +45,7 @@ public class Player extends SuperPlayer implements ActionPlayer {
             direction = "UP";
             r.y = worldY;
             if (kh.shift) {
-            	worldY -= speed + 2;
+            	worldY -= speed + 0.5;
             }
         }
         if (kh.down) {
@@ -53,7 +53,7 @@ public class Player extends SuperPlayer implements ActionPlayer {
             direction = "DOWN";
             r.y = worldY;
             if (kh.shift) {
-            	worldY += speed + 2;
+            	worldY += speed + 0.5;
             }
         }
         if (kh.left) {
@@ -61,7 +61,7 @@ public class Player extends SuperPlayer implements ActionPlayer {
             direction = "LEFT";
             r.x = worldX;
             if (kh.shift) {
-            	worldX -= speed + 2;
+            	worldX -= speed + 0.5;
             }            
         }
         if (kh.right) {
@@ -69,7 +69,7 @@ public class Player extends SuperPlayer implements ActionPlayer {
             direction = "RIGHT";
             r.x = worldX;
             if (kh.shift) {
-            	worldX += speed + 2;
+            	worldX += speed + 0.5;
             }
         }
     }
