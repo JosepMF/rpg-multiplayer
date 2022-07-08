@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import entity.object.ObjectLoader;
 import entity.player.Player;
 import map.MapLoader;
 
@@ -28,6 +29,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWith = colWorldNumber * squareSize;
     public final int worldHeigth = rowWorldNumber * squareSize;
 
+    // test objects
+
+    ObjectLoader objectLoader;
 
     // FPS
     int FPS = 60;
@@ -50,6 +54,9 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread = new Thread(this);
 
         player = new Player(this, kh, 1);
+
+        objectLoader = new ObjectLoader(this);
+        objectLoader.loadObjects();
 
         mapLoader = new MapLoader(this);
         mapLoader.loadMap();
@@ -75,6 +82,8 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         mapLoader.draw(g2);
+
+        objectLoader.drawObjects(g2);
 
         player.draw(g2);
 

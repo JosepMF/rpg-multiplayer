@@ -30,6 +30,7 @@ public class MapLoader {
     public void loadMap() {
         try {
             InputStream is = getClass().getResourceAsStream("res/map01.txt");
+            assert is != null;
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -73,6 +74,7 @@ public class MapLoader {
                wy > gp.player.worldY - gp.player.screenY - gp.squareSize &&
                wx < gp.player.worldX + gp.player.screenX + gp.squareSize &&
                wy < gp.player.worldY + gp.player.screenY + gp.squareSize) {
+                // tile drawer
                 g2.setColor(tileLoader.tiles[num].color);
                 g2.fillRect(sx, sy, gp.squareSize, gp.squareSize);
             }

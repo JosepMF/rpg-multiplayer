@@ -23,8 +23,8 @@ public class Player extends SuperPlayer implements ActionPlayer {
         this.width = gp.squareSize;
         this.height = gp.squareSize;
         
-        this.worldX = gp.worldWith/2 - (this.worldX/2);
-        this.worldX = gp.worldHeigth/2 - (this.worldY/2);
+        this.worldX = gp.worldWith/2 - (this.width/2);
+        this.worldY = gp.worldHeigth/2 - (this.height/2);
         
         this.screenX = gp.screenWidth / 2 - this.width / 2;
         this.screenY = gp.screenHeigth / 2 - this.height / 2; 
