@@ -9,6 +9,8 @@ public class TestObject extends SuperObject {
     public TestObject(int wx, int wy, GamePanel gp) {
         this.worldX = wx;
         this.worldY = wy;
+        this.width = gp.squareSize;
+        this.height = gp.squareSize;
         this.gp = gp;
         this.color = Color.RED;
     }

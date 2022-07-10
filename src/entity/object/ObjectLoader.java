@@ -28,4 +28,12 @@ public class ObjectLoader {
             }
         }
     }
+
+    public void checkCollisions() {
+        for (TestObject testObject : testObjects) {
+            if (testObject != null) {
+                testObject.checkCollisions();
+            }
+        }
+    }
 }

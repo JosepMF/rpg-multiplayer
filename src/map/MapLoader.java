@@ -72,8 +72,8 @@ public class MapLoader {
             
             if(wx > gp.player.worldX - gp.player.screenX - gp.squareSize &&
                wy > gp.player.worldY - gp.player.screenY - gp.squareSize &&
-               wx < gp.player.worldX + gp.player.screenX + gp.squareSize &&
-               wy < gp.player.worldY + gp.player.screenY + gp.squareSize) {
+               wx < gp.player.worldX + gp.player.screenX + gp.squareSize*2 &&
+               wy < gp.player.worldY + gp.player.screenY + gp.squareSize*2) {
                 // tile drawer
                 g2.setColor(tileLoader.tiles[num].color);
                 g2.fillRect(sx, sy, gp.squareSize, gp.squareSize);

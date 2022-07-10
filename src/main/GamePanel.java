@@ -29,9 +29,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWith = colWorldNumber * squareSize;
     public final int worldHeigth = rowWorldNumber * squareSize;
 
-    // test objects
-
-    ObjectLoader objectLoader;
+    ObjectLoader objectLoader; // object loader class
+    CollisionChecker collisionChecker; // collision checker class
 
     // FPS
     int FPS = 60;
@@ -45,10 +44,8 @@ public class GamePanel extends JPanel implements Runnable {
     Dimension panelDimensions = new Dimension(screenWidth, screenHeigth);
 
     /**
-     * 
-     *  Game panel constructor
-     * 
-     * */ 
+     * Game panel constructor
+     */
 
     public GamePanel() {
         gameThread = new Thread(this);
@@ -57,6 +54,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         objectLoader = new ObjectLoader(this);
         objectLoader.loadObjects();
+
+        collisionChecker = new CollisionChecker(this, objectLoader);
 
         mapLoader = new MapLoader(this);
         mapLoader.loadMap();
@@ -96,22 +95,20 @@ public class GamePanel extends JPanel implements Runnable {
         player.update();
     }
 
-    // checking collitions
+    // checking collisions
 
-    private void checkCollitions() {
-        // TODO: set the collitions of the objects and tiles
+    private void checkCollisions() {
+        collisionChecker.checkAllCollisions();
     }
 
     /**
-     * 
      * this is the game loop of the panel game, iside this,
-     * do updates, draws and check collitions of the components.
-     * 
+     * do updates, draws and check collisions of the components.
      */
 
     @Override
     public void run() {
-        double drawInterval = 1000000000/FPS;
+        double drawInterval = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -126,16 +123,16 @@ public class GamePanel extends JPanel implements Runnable {
             timer += (currentTime - lastTime);
             lastTime = currentTime;
 
-            if(delta >= 1) {
+            if (delta >= 1) {
                 update();
                 repaint();
-                checkCollitions();
+                checkCollisions();
                 delta--;
                 drawCount++;
             }
 
-            if(timer >= 1000000000) {
-                System.out.println("FPS: "+drawCount);
+            if (timer >= 1000000000) {
+                System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
