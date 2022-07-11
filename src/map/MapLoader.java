@@ -3,7 +3,6 @@ package map;
 import main.GamePanel;
 import map.tiles.TileLoader;
 
-import java.awt.Rectangle;
 import java.awt.Graphics2D;
 
 import java.io.BufferedReader;
@@ -13,16 +12,13 @@ import java.io.InputStreamReader;
 
 public class MapLoader {
     GamePanel gp;
-    TileLoader tileLoader;
-    int[][] mapTileNum;
-    Rectangle[][] rectangles;
+    public TileLoader tileLoader;
+    public int[][] mapTileNum;
 
     public MapLoader(GamePanel gp) {
         this.gp = gp;
 
         mapTileNum = new int[gp.colWorldNumber][gp.rowWorldNumber];
-
-        rectangles = new Rectangle[gp.colWorldNumber][gp.rowWorldNumber];
 
         tileLoader = new TileLoader();
     }

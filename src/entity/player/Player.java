@@ -41,20 +41,48 @@ public class Player extends SuperPlayer implements ActionPlayer {
     @Override
     public void update() {
         if (kh.up) {
-            worldY -= speed;
             direction = "UP";
         }
         if (kh.down) {
-            worldY += speed;
             direction = "DOWN";
         }
         if (kh.left) {
-            worldX -= speed;
             direction = "LEFT";
         }
         if (kh.right) {
-            worldX += speed;
             direction = "RIGHT";
+        }
+
+        if(kh.shift) {
+            System.out.println("run");
+            speed = 4;
+        } else {
+            speed = 3;
+        }
+
+        gp.collisionChecker.tilesCollisionController(this);
+
+        if(kh.up || kh.down || kh.left || kh.right) {
+            if(!collisionOn) {
+                if(direction.equals("UP")) {
+                    worldY -= speed;
+                    r.y -= speed;
+                }
+                if(direction.equals("DOWN")) {
+                    worldY += speed;
+                    r.y += speed;
+                }
+                if(direction.equals("LEFT")) {
+                    worldX -= speed;
+                    r.x -= speed;
+                }
+                if(direction.equals("RIGHT")) {
+                    worldX += speed;
+                    r.x += speed;
+                }
+            } else {
+                System.out.println("collision");
+            }
         }
     }
 }

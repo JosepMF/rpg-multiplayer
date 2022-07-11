@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldHeigth = rowWorldNumber * squareSize;
 
     ObjectLoader objectLoader; // object loader class
-    CollisionChecker collisionChecker; // collision checker class
+    public CollisionChecker collisionChecker; // collision checker class
 
     // FPS
     int FPS = 60;

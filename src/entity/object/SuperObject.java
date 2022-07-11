@@ -27,10 +27,10 @@ public class SuperObject extends Entity {
     }
 
     // check collisions
-    public void checkCollisions() {
+    public void checkCollisions(Entity entity) {
         // TODO: to the Josep of the future, you must repair the time execution error
         try {
-            if(r.intersects(gp.player.r)) {
+            if(r.intersects(entity.r)) {
                 System.out.println("collided");
             }
         } catch (Exception e) {
