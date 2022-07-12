@@ -8,6 +8,7 @@ public class Entity {
     public Rectangle r;
     public boolean collisionOn = false;
     public String direction = "UP";
+    public String preDirection = "UP";
     public int speed;
 
 }

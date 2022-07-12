@@ -15,14 +15,23 @@ public class CollisionChecker {
 
     // check collisions with tiles
     public void tilesCollisionController(Entity entity) {
-        int col = (entity.worldX+(entity.width/2))/gp.squareSize;
-        int row = (entity.worldY+(entity.height/2))/gp.squareSize;
+        int col = (entity.worldX + (entity.width / 2)) / gp.squareSize;
+        int row = (entity.worldY + (entity.height / 2)) / gp.squareSize;
 
         int tileNum = gp.mapLoader.mapTileNum[col][row];
 
         if(gp.mapLoader.tileLoader.tiles[tileNum].collitions) {
-            entity.collisionOn = true;
+            entity.preDirection = entity.direction;
+            switch (entity.direction) {
+                case "UP":
+                case "DOWN":
+                    entity.worldY -= ((row*gp.squareSize)-entity.worldY); break;
+                case "LEFT":
+                case "RIGHT":
+                    entity.worldX -= ((col*gp.squareSize)-entity.worldX); break;
+            }
         }
+        entity.collisionOn = gp.mapLoader.tileLoader.tiles[tileNum].collitions;
     }
 
     protected void checkAllCollisions() {

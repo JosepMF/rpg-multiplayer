@@ -9,6 +9,7 @@ public class ObjectLoader {
     GamePanel gp;
 
     SuperObject[] testObjects;
+
     public ObjectLoader(GamePanel gp) {
         this.gp = gp;
 
@@ -18,9 +19,7 @@ public class ObjectLoader {
 
     public void loadObjects() {
         // TODO: are a big problem in detection of object entity's
-        testObjects[0] = new TestObject(500,500,this.gp);
-        testObjects[1] = new TestObject(200,200,this.gp);
-        testObjects[2] = new TestObject(250,400,this.gp);
+        testObjects[0] = new TestObject((12 * gp.squareSize) - gp.squareSize, (14 * gp.squareSize) - gp.squareSize, this.gp);
     }
 
     public void drawObjects(Graphics2D g2) {
@@ -32,9 +31,15 @@ public class ObjectLoader {
     }
 
     public void checkCollisions() {
-        for (SuperObject testObject : testObjects) {
-            if (testObject != null) {
-                testObject.checkCollisions(gp.player);
+        for (SuperObject obj : testObjects) {
+            if (obj != null) {
+                try {
+                    if(obj.r.intersects(gp.player.r)) {
+                        obj.action();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

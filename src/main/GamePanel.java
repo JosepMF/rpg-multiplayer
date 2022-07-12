@@ -1,9 +1,6 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
@@ -39,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public KeyHandler kh = new KeyHandler();
 
-    Thread gameThread;
+    public Thread gameThread;
 
     Dimension panelDimensions = new Dimension(screenWidth, screenHeigth);
 
@@ -86,6 +83,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         player.draw(g2);
 
+        gameOverM(g2);
+
         g2.dispose();
     }
 
@@ -124,9 +123,9 @@ public class GamePanel extends JPanel implements Runnable {
             lastTime = currentTime;
 
             if (delta >= 1) {
+                checkCollisions();
                 update();
                 repaint();
-                checkCollisions();
                 delta--;
                 drawCount++;
             }
@@ -139,4 +138,14 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    // test game fake
+    public boolean gameOver = false;
+
+    private void gameOverM(Graphics2D g2) {
+        if(gameOver) {
+            g2.setColor(Color.RED);
+            g2.setFont(new Font("Monospaced",Font.BOLD+Font.ITALIC,40));
+            g2.drawString("You won", screenWidth/2-40, 40);
+        }
+    }
 }

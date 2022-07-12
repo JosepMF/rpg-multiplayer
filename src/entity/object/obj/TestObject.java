@@ -14,4 +14,10 @@ public class TestObject extends SuperObject {
         this.gp = gp;
         this.color = Color.RED;
     }
+
+    public void action() {
+        System.out.println("end game");
+        gp.gameOver = true;
+        gp.gameThread = null;
+    }
 }

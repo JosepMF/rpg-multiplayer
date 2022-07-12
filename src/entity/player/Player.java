@@ -53,7 +53,7 @@ public class Player extends SuperPlayer implements ActionPlayer {
             direction = "RIGHT";
         }
 
-        if(kh.shift) {
+        if (kh.shift) {
             System.out.println("run");
             speed = 4;
         } else {
@@ -62,27 +62,22 @@ public class Player extends SuperPlayer implements ActionPlayer {
 
         gp.collisionChecker.tilesCollisionController(this);
 
-        if(kh.up || kh.down || kh.left || kh.right) {
-            if(!collisionOn) {
-                if(direction.equals("UP")) {
+        if (kh.up || kh.down || kh.left || kh.right) {
+            if (!collisionOn) {
+                if (direction.equals("UP")) {
                     worldY -= speed;
-                    r.y -= speed;
                 }
-                if(direction.equals("DOWN")) {
+                if (direction.equals("DOWN")) {
                     worldY += speed;
-                    r.y += speed;
                 }
-                if(direction.equals("LEFT")) {
+                if (direction.equals("LEFT")) {
                     worldX -= speed;
-                    r.x -= speed;
                 }
-                if(direction.equals("RIGHT")) {
+                if (direction.equals("RIGHT")) {
                     worldX += speed;
-                    r.x += speed;
                 }
-            } else {
-                System.out.println("collision");
             }
+
         }
     }
 }

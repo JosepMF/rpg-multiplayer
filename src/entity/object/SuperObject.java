@@ -5,7 +5,7 @@ import main.GamePanel;
 
 import java.awt.*;
 
-public class SuperObject extends Entity {
+public abstract class SuperObject extends Entity {
     public GamePanel gp;
     public Color color;
 
@@ -26,15 +26,5 @@ public class SuperObject extends Entity {
         r.height = height;
     }
 
-    // check collisions
-    public void checkCollisions(Entity entity) {
-        // TODO: to the Josep of the future, you must repair the time execution error
-        try {
-            if(r.intersects(entity.r)) {
-                System.out.println("collided");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    public abstract void action();
 }
