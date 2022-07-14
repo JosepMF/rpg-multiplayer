@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.swing.JPanel;
 
+import entity.enemy.EnemyLoader;
 import entity.object.ObjectLoader;
 import entity.player.Player;
 import map.MapLoader;
@@ -16,6 +17,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public final int screenWidth = colNumber * squareSize;
     public final int screenHeigth = rowNumber * squareSize;
+    public boolean gameOver = false;
 
     MapLoader mapLoader;
 
@@ -28,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     ObjectLoader objectLoader; // object loader class
     public CollisionChecker collisionChecker; // collision checker class
+    EnemyLoader enemyLoader;
 
     // FPS
     int FPS = 60;
@@ -39,6 +42,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Thread gameThread;
 
     Dimension panelDimensions = new Dimension(screenWidth, screenHeigth);
+
+    UI ui;
 
     /**
      * Game panel constructor
@@ -54,8 +59,13 @@ public class GamePanel extends JPanel implements Runnable {
 
         collisionChecker = new CollisionChecker(this, objectLoader);
 
+        enemyLoader = new EnemyLoader(this);
+        enemyLoader.loadEnemies();
+
         mapLoader = new MapLoader(this);
         mapLoader.loadMap();
+
+        ui = new UI(this);
 
         this.setPreferredSize(panelDimensions);
         this.setDoubleBuffered(true);
@@ -81,9 +91,11 @@ public class GamePanel extends JPanel implements Runnable {
 
         objectLoader.drawObjects(g2);
 
+        enemyLoader.drawAndUpdate(g2);
+
         player.draw(g2);
 
-        gameOverM(g2);
+        ui.draw(g2);
 
         g2.dispose();
     }
@@ -135,17 +147,6 @@ public class GamePanel extends JPanel implements Runnable {
                 drawCount = 0;
                 timer = 0;
             }
-        }
-    }
-
-    // test game fake
-    public boolean gameOver = false;
-
-    private void gameOverM(Graphics2D g2) {
-        if(gameOver) {
-            g2.setColor(Color.RED);
-            g2.setFont(new Font("Monospaced",Font.BOLD+Font.ITALIC,40));
-            g2.drawString("You won", screenWidth/2-40, 40);
         }
     }
 }

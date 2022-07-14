@@ -8,4 +8,6 @@ public class SuperPlayer extends Entity {
     public long id;
     GamePanel gp;
     KeyHandler kh;
+    public float liveLevels = 3;
+
 }

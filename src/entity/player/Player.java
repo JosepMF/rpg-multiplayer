@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 import main.GamePanel;
 import main.KeyHandler;
+import utils.Direction;
 
 public class Player extends SuperPlayer implements ActionPlayer {
     public int screenX;
@@ -40,17 +41,30 @@ public class Player extends SuperPlayer implements ActionPlayer {
 
     @Override
     public void update() {
+        controllers();
+        gameOver();
+    }
+
+    private void gameOver() {
+        if(liveLevels <= 0) {
+            liveLevels = 3;
+            worldX = gp.worldWith / 2 - (this.width / 2);
+            worldY = gp.worldHeigth / 2 - (this.height / 2);
+        }
+    }
+
+    private void controllers() {
         if (kh.up) {
-            direction = "UP";
+            direction = Direction.UP;
         }
         if (kh.down) {
-            direction = "DOWN";
+            direction = Direction.DOWN;
         }
         if (kh.left) {
-            direction = "LEFT";
+            direction = Direction.LEFT;
         }
         if (kh.right) {
-            direction = "RIGHT";
+            direction = Direction.RIGHT;
         }
 
         if (kh.shift) {
@@ -64,16 +78,16 @@ public class Player extends SuperPlayer implements ActionPlayer {
 
         if (kh.up || kh.down || kh.left || kh.right) {
             if (!collisionOn) {
-                if (direction.equals("UP")) {
+                if (direction.equals(Direction.UP)) {
                     worldY -= speed;
                 }
-                if (direction.equals("DOWN")) {
+                if (direction.equals(Direction.DOWN)) {
                     worldY += speed;
                 }
-                if (direction.equals("LEFT")) {
+                if (direction.equals(Direction.LEFT)) {
                     worldX -= speed;
                 }
-                if (direction.equals("RIGHT")) {
+                if (direction.equals(Direction.RIGHT)) {
                     worldX += speed;
                 }
             }
