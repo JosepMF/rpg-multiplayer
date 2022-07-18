@@ -68,7 +68,6 @@ public class Player extends SuperPlayer implements ActionPlayer {
         }
 
         if (kh.shift) {
-            System.out.println("run");
             speed = 4;
         } else {
             speed = 3;

@@ -38,7 +38,7 @@ public class ObjectLoader {
                         obj.action();
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+
                 }
             }
         }

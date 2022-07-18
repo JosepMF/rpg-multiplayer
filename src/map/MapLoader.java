@@ -71,8 +71,7 @@ public class MapLoader {
                wx < gp.player.worldX + gp.player.screenX + gp.squareSize*2 &&
                wy < gp.player.worldY + gp.player.screenY + gp.squareSize*2) {
                 // tile drawer
-                g2.setColor(tileLoader.tiles[num].color);
-                g2.fillRect(sx, sy, gp.squareSize, gp.squareSize);
+                g2.drawImage(tileLoader.tiles[num].image, sx, sy, gp.squareSize, gp.squareSize, null);
             }
             worldCol++;
 

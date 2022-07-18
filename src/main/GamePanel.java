@@ -12,7 +12,7 @@ import map.MapLoader;
 public class GamePanel extends JPanel implements Runnable {
     public final int rowNumber = 20;
     public final int colNumber = 30;
-    private final int scale = 2;
+    private final int scale = 3;
     public final int squareSize = 16 * scale;
 
     public final int screenWidth = colNumber * squareSize;
@@ -23,8 +23,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // World settings
 
-    public final int rowWorldNumber = 50;
-    public final int colWorldNumber = 50;
+    public final int rowWorldNumber = 200;
+    public final int colWorldNumber = 200;
     public final int worldWith = colWorldNumber * squareSize;
     public final int worldHeigth = rowWorldNumber * squareSize;
 

@@ -21,7 +21,7 @@ public class CollisionChecker {
         int tileNum = gp.mapLoader.mapTileNum[col][row];
 
         // TODO: change this f*ck1ng method to other algorithm more efficiency
-        if(gp.mapLoader.tileLoader.tiles[tileNum].collitions) {
+        if(gp.mapLoader.tileLoader.tiles[tileNum].collisions) {
             entity.preDirection = entity.direction;
             switch (entity.direction) {
                 case "UP":
@@ -32,7 +32,7 @@ public class CollisionChecker {
                     entity.worldX -= ((col*gp.squareSize)-entity.worldX); break;
             }
         }
-        entity.collisionOn = gp.mapLoader.tileLoader.tiles[tileNum].collitions;
+        entity.collisionOn = gp.mapLoader.tileLoader.tiles[tileNum].collisions;
     }
 
     protected void checkAllCollisions() {
