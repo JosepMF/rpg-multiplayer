@@ -44,11 +44,11 @@ public class UI {
             for (int i = 0; i <= objInventory.length - 1; i++) {
                 sy = gp.screenHeigth - gp.squareSize;
                 sx = iterator;
+                if(gp.player.objectIndexSelected == i) {
+                    g2.setColor(Color.RED);
+                    g2.fillOval(sx, sy - gp.squareSize - 5, gp.squareSize, gp.squareSize);
+                }
                 if(objInventory[i] != null) {
-                    if(gp.player.objectIndexSelected == i) {
-                        g2.setColor(Color.RED);
-                        g2.fillOval(sx, sy - objInventory[i].height - 5, objInventory[i].width, objInventory[i].height);
-                    }
                     g2.drawImage(objInventory[i].image, sx, sy, objInventory[i].width, objInventory[i].height, null);
 
                 }
