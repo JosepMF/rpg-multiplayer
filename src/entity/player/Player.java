@@ -114,14 +114,18 @@ public class Player extends SuperPlayer implements ActionPlayer {
                 objectIndexSelected++;
             }
             if (objInventory[objectIndexSelected] != null) {
-                System.out.println(objInventory[objectIndexSelected]);
-                if(kh.actionEnter) {
+                if (kh.actionEnter) {
                     objInventory[objectIndexSelected].action();
-                    objInventory[objectIndexSelected] = null;
+                    if (!(objInventory[objectIndexSelected].name.equals("bad_sword")      ||
+                            objInventory[objectIndexSelected].name.equals("medium_sword") ||
+                            objInventory[objectIndexSelected].name.equals("good_sword")   ||
+                            objInventory[objectIndexSelected].name.equals("based_sword"))) {
+                        objInventory[objectIndexSelected] = null;
+                    }
                 }
             }
         }
-        if(objectSensibility == 10) {
+        if (objectSensibility == 10) {
             objectSensibility = 0;
         }
     }

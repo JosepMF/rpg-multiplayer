@@ -12,6 +12,7 @@ public abstract class SuperObject extends Entity {
     public String name;
     public int colNumber;
     public int rowNumber;
+    public float damage;
 
     // draw object
     public void draw(Graphics2D g2) {

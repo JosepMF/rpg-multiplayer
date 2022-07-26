@@ -1,6 +1,6 @@
 package entity.object;
 
-import entity.object.obj.Apple;
+import entity.object.obj.*;
 
 import main.GamePanel;
 
@@ -34,7 +34,10 @@ public class ObjectLoader {
         objectsOnTheWorld[70][16] = new Apple(70, 16, this.gp);
         objectsOnTheWorld[70][17] = new Apple(70, 17, this.gp);
         objectsOnTheWorld[70][18] = new Apple(70, 18, this.gp);
-
+        objectsOnTheWorld[71][8] = new BadSword(71, 8, this.gp);
+        objectsOnTheWorld[71][9] = new MediumSword(71, 9, this.gp);
+        objectsOnTheWorld[71][10] = new GoodSword(71, 10, this.gp);
+        objectsOnTheWorld[71][11] = new BasedSword(71, 11, this.gp);
     }
 
     private void loadObjectsOnArray() {
@@ -49,6 +52,10 @@ public class ObjectLoader {
         objects[8] = objectsOnTheWorld[70][16];
         objects[9] = objectsOnTheWorld[70][17];
         objects[10] = objectsOnTheWorld[70][18];
+        objects[11] = objectsOnTheWorld[71][8];
+        objects[12] = objectsOnTheWorld[71][9];
+        objects[13] = objectsOnTheWorld[71][10];
+        objects[14] = objectsOnTheWorld[71][11];
     }
 
     public void drawObjects(Graphics2D g2) {

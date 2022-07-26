@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     ObjectLoader objectLoader; // object loader class
     public CollisionChecker collisionChecker; // collision checker class
-    EnemyLoader enemyLoader;
+    public EnemyLoader enemyLoader;
 
     // FPS
     int FPS = 60;

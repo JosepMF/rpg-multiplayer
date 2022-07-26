@@ -20,10 +20,13 @@ public class EnemyLoader {
     }
 
     public void drawAndUpdate(Graphics2D g2) {
-        for(SuperEnemy enemy : enemies) {
-            if(enemy != null) {
-                enemy.draw(g2);
-                enemy.update();
+        for(int i = 0; i <= enemies.length - 1; i++) {
+            if(enemies[i] != null) {
+                enemies[i].draw(g2);
+                enemies[i].update();
+                if(enemies[i].liveLevels < 0) {
+                    enemies[i] = null;
+                }
             }
         }
     }

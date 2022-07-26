@@ -43,7 +43,7 @@ public class UI {
         if (kh.inventory) {
             for (int i = 0; i <= objInventory.length - 1; i++) {
                 sy = gp.screenHeigth - gp.squareSize;
-                sx = iterator;
+                sx = iterator + gp.screenWidth/5;
                 if(gp.player.objectIndexSelected == i) {
                     g2.setColor(Color.RED);
                     g2.fillOval(sx, sy - gp.squareSize - 5, gp.squareSize, gp.squareSize);
