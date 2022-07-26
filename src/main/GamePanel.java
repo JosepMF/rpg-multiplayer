@@ -8,6 +8,7 @@ import entity.enemy.EnemyLoader;
 import entity.object.ObjectLoader;
 import entity.player.Player;
 import map.MapLoader;
+import ui.UI;
 
 public class GamePanel extends JPanel implements Runnable {
     public final int rowNumber = 20;
@@ -23,8 +24,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // World settings
 
-    public final int rowWorldNumber = 200;
-    public final int colWorldNumber = 200;
+    public final int rowWorldNumber = 100;
+    public final int colWorldNumber = 100;
     public final int worldWith = colWorldNumber * squareSize;
     public final int worldHeigth = rowWorldNumber * squareSize;
 
@@ -52,10 +53,8 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel() {
         gameThread = new Thread(this);
 
-        player = new Player(this, kh, 1);
-
         objectLoader = new ObjectLoader(this);
-        objectLoader.loadObjects();
+        objectLoader.loadObjectsOnTheMap();
 
         collisionChecker = new CollisionChecker(this, objectLoader);
 
@@ -65,7 +64,9 @@ public class GamePanel extends JPanel implements Runnable {
         mapLoader = new MapLoader(this);
         mapLoader.loadMap();
 
-        ui = new UI(this);
+        ui = new UI(this, kh);
+
+        player = new Player(this, kh, 1);
 
         this.setPreferredSize(panelDimensions);
         this.setDoubleBuffered(true);
@@ -74,7 +75,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setBackground(Color.BLACK);
     }
 
-    // start the game therad
+    // start the game thread
 
     public void startGame() {
         gameThread.start();
@@ -108,10 +109,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     // checking collisions
 
-    private void checkCollisions() {
-        collisionChecker.checkAllCollisions();
-    }
-
     /**
      * this is the game loop of the panel game, iside this,
      * do updates, draws and check collisions of the components.
@@ -135,7 +132,6 @@ public class GamePanel extends JPanel implements Runnable {
             lastTime = currentTime;
 
             if (delta >= 1) {
-                checkCollisions();
                 update();
                 repaint();
                 delta--;

@@ -74,6 +74,7 @@ public class Player extends SuperPlayer implements ActionPlayer {
         }
 
         gp.collisionChecker.tilesCollisionController(this);
+        gp.collisionChecker.checkObjectsCollisions(this);
 
         if (kh.up || kh.down || kh.left || kh.right) {
             if (!collisionOn) {

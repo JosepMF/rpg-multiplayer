@@ -4,10 +4,14 @@ import entity.Entity;
 import main.GamePanel;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class SuperObject extends Entity {
     public GamePanel gp;
-    public Color color;
+    public BufferedImage image;
+
+    public int colNumber;
+    public int rowNumber;
 
     // draw object
     public void draw(Graphics2D g2) {
@@ -15,8 +19,7 @@ public abstract class SuperObject extends Entity {
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
         // drawing object
-        g2.setColor(color);
-        g2.fillOval(screenX,screenY,gp.squareSize,gp.squareSize);
+        g2.drawImage(image,screenX,screenY,gp.squareSize,gp.squareSize, null);
 
         // load rectangle object
         r = new Rectangle();

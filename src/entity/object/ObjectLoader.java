@@ -1,6 +1,7 @@
 package entity.object;
 
-import entity.object.obj.TestObject;
+import entity.object.obj.Apple;
+
 import main.GamePanel;
 
 import java.awt.*;
@@ -8,38 +9,38 @@ import java.awt.*;
 public class ObjectLoader {
     GamePanel gp;
 
-    SuperObject[] testObjects;
+    public SuperObject[] objects;
+
+    public SuperObject[][] objectsOnTheWorld;
 
     public ObjectLoader(GamePanel gp) {
         this.gp = gp;
 
         // init tests objects array
-        testObjects = new SuperObject[10];
+        objects = new SuperObject[10];
+        objectsOnTheWorld = new SuperObject[gp.colWorldNumber][gp.rowWorldNumber];
     }
 
-    public void loadObjects() {
+    public void loadObjectsOnTheMap() {
         // TODO: are a big problem in detection of object entity's
-        testObjects[0] = new TestObject((12 * gp.squareSize) - gp.squareSize, (14 * gp.squareSize) - gp.squareSize, this.gp);
+        objectsOnTheWorld[12][14] = new Apple(12, 14, this.gp);
+        objectsOnTheWorld[50][50] = new Apple(50, 50, this.gp);
+        objectsOnTheWorld[18][30] = new Apple(18, 30, this.gp);
+        objectsOnTheWorld[70][10] = new Apple(70, 10, this.gp);
+    }
+
+    private void loadObjectsOnArray() {
+        objects[0] = objectsOnTheWorld[12][14];
+        objects[1] = objectsOnTheWorld[50][50];
+        objects[2] = objectsOnTheWorld[18][30];
+        objects[3] = objectsOnTheWorld[70][10];
     }
 
     public void drawObjects(Graphics2D g2) {
-        for (SuperObject testObject : testObjects) {
-            if (testObject != null) {
-                testObject.draw(g2);
-            }
-        }
-    }
-
-    public void checkCollisions() {
-        for (SuperObject obj : testObjects) {
+        loadObjectsOnArray();
+        for (SuperObject obj : objects) {
             if (obj != null) {
-                try {
-                    if(obj.r.intersects(gp.player.r)) {
-                        obj.action();
-                    }
-                } catch (Exception e) {
-
-                }
+                obj.draw(g2);
             }
         }
     }

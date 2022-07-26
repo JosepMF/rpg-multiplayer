@@ -1,11 +1,16 @@
-package main;
+package ui;
+
+import main.GamePanel;
+import main.KeyHandler;
 
 import java.awt.*;
 
 public class UI {
     GamePanel gp;
+    KeyHandler kh;
 
-    public UI(GamePanel gp) {
+    public UI(GamePanel gp, KeyHandler kh) {
+        this.kh = kh;
         this.gp = gp;
     }
 
