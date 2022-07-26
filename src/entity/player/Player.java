@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import entity.object.SuperObject;
 import main.GamePanel;
 import main.KeyHandler;
 import utils.Direction;
@@ -12,6 +13,8 @@ import utils.Direction;
 public class Player extends SuperPlayer implements ActionPlayer {
     public int screenX;
     public int screenY;
+    private int objectSensibility = 0;
+    public int objectIndexSelected = 0;
 
     public Player(GamePanel gp, KeyHandler kh, long id) {
 
@@ -31,6 +34,8 @@ public class Player extends SuperPlayer implements ActionPlayer {
         this.screenY = gp.screenHeigth / 2 - this.height / 2;
 
         this.r = new Rectangle(screenX + width - width / 3, screenY + height / 3, width - width / 3, height - height / 3);
+
+        this.objInventory = new SuperObject[20];
     }
 
     @Override
@@ -42,11 +47,13 @@ public class Player extends SuperPlayer implements ActionPlayer {
     @Override
     public void update() {
         controllers();
+        collisions();
+        inventoryManage();
         gameOver();
     }
 
     private void gameOver() {
-        if(liveLevels <= 0) {
+        if (liveLevels <= 0) {
             liveLevels = 3;
             worldX = gp.worldWith / 2 - (this.width / 2);
             worldY = gp.worldHeigth / 2 - (this.height / 2);
@@ -73,9 +80,6 @@ public class Player extends SuperPlayer implements ActionPlayer {
             speed = 3;
         }
 
-        gp.collisionChecker.tilesCollisionController(this);
-        gp.collisionChecker.checkObjectsCollisions(this);
-
         if (kh.up || kh.down || kh.left || kh.right) {
             if (!collisionOn) {
                 if (direction.equals(Direction.UP)) {
@@ -92,6 +96,33 @@ public class Player extends SuperPlayer implements ActionPlayer {
                 }
             }
 
+        }
+    }
+
+    private void collisions() {
+        gp.collisionChecker.tilesCollisionController(this);
+        gp.collisionChecker.checkObjectsCollisions(this);
+    }
+
+    private void inventoryManage() {
+        objectSensibility++;
+        if (objectSensibility == 10) {
+            if (objectIndexSelected > 0 && kh.arrowLeft) {
+                objectIndexSelected--;
+            }
+            if (objectIndexSelected < objInventory.length - 1 && kh.arrowRight) {
+                objectIndexSelected++;
+            }
+            if (objInventory[objectIndexSelected] != null) {
+                System.out.println(objInventory[objectIndexSelected]);
+                if(kh.actionEnter) {
+                    objInventory[objectIndexSelected].action();
+                    objInventory[objectIndexSelected] = null;
+                }
+            }
+        }
+        if(objectSensibility == 10) {
+            objectSensibility = 0;
         }
     }
 }

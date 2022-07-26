@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 public abstract class SuperObject extends Entity {
     public GamePanel gp;
     public BufferedImage image;
-
+    public String name;
     public int colNumber;
     public int rowNumber;
 

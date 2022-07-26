@@ -4,6 +4,8 @@ import entity.Entity;
 import entity.object.ObjectLoader;
 import entity.object.SuperObject;
 
+import java.util.Arrays;
+
 public class CollisionChecker {
     GamePanel gp;
 
@@ -42,10 +44,16 @@ public class CollisionChecker {
         int col = (entity.worldX + (entity.width / 2)) / gp.squareSize;
         int row = (entity.worldY + (entity.height / 2)) / gp.squareSize;
 
-        if(ol.objectsOnTheWorld[col][row] != null) {
-            ol.objectsOnTheWorld[col][row].action();
-            ol.objectsOnTheWorld[col][row] = null;
-            System.out.println();
+        if (ol.objectsOnTheWorld[col][row] != null) {
+            for (int i = 0; i <= entity.objInventory.length; i++) {
+                if (entity.objInventory[i] == null) {
+                    entity.objInventory[i] = ol.objectsOnTheWorld[col][row];
+                    ol.objectsOnTheWorld[col][row] = null;
+                    break;
+                } else if (entity.objInventory[entity.objInventory.length - 1] != null) {
+                    break;
+                }
+            }
         }
     }
 }
