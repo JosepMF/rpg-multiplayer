@@ -3,8 +3,11 @@ package entity.object;
 import entity.Entity;
 import main.GamePanel;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Objects;
 
 public abstract class SuperObject extends Entity {
     public GamePanel gp;
@@ -28,6 +31,14 @@ public abstract class SuperObject extends Entity {
         r.y = screenY;
         r.width = width;
         r.height = height;
+    }
+
+    protected void loadImage(String name) {
+        try {
+            this.image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(name)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public abstract void action();

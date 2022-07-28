@@ -13,5 +13,6 @@ public class Entity {
     public String direction = "UP";
     public String preDirection = "UP";
     public int speed;
-
+    public float damage;
+    public float liveLevels;
 }

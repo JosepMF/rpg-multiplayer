@@ -17,15 +17,9 @@ public class Apple extends SuperObject {
         this.worldY = this.rowNumber * gp.squareSize;
         this.width = gp.squareSize;
         this.height = gp.squareSize;
-        this.loadImage();
+        this.loadImage("../res/apple.png");
     }
-    private void loadImage() {
-        try {
-            this.image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("../res/apple.png")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
     @Override
     public void action() {
         gp.player.liveLevels++;

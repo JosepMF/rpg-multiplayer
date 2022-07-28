@@ -6,13 +6,11 @@ import main.GamePanel;
 import java.awt.*;
 
 public class Slime extends SuperEnemy {
-    private int counter = 0;
-
     public Slime(GamePanel gp, int x, int y) {
         this.enemyID = 1;
         this.name = "Slime";
-        this.speed = 10;
-        this.damage = (float)0.01;
+        this.speed = 1;
+        this.damage = (float) 0.01;
         this.liveLevels = 1;
 
         this.gp = gp;
@@ -29,24 +27,21 @@ public class Slime extends SuperEnemy {
 
     @Override
     public void update() {
+        // setPlayerTracked(20,20);
         controllers();
         attack();
     }
 
     private void controllers() {
-        counter++;
-        if(counter == 5) {
-            if (gp.player.worldX > worldX) {
-                worldX += speed;
-            } else {
-                worldX -= speed;
-            }
-            if (gp.player.worldY > worldY) {
-                worldY += speed;
-            } else {
-                worldY -= speed;
-            }
-            counter = 0;
+        if (gp.player.worldX > worldX) {
+            worldX += speed;
+        } else {
+            worldX -= speed;
+        }
+        if (gp.player.worldY > worldY) {
+            worldY += speed;
+        } else {
+            worldY -= speed;
         }
     }
 
