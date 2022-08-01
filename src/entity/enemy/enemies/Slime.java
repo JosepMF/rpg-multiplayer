@@ -9,15 +9,17 @@ public class Slime extends SuperEnemy {
     public Slime(GamePanel gp, int x, int y) {
         this.enemyID = 1;
         this.name = "Slime";
+        this.gp = gp;
         this.speed = 1;
         this.damage = (float) 0.01;
         this.liveLevels = 1;
+        this.color = Color.GRAY;
+        this.trackedAreaDistance = this.gp.squareSize * 10;
 
-        this.gp = gp;
         this.direction = "RIGHT";
 
-        this.width = gp.squareSize;
-        this.height = gp.squareSize;
+        this.width = this.gp.squareSize;
+        this.height = this.gp.squareSize;
 
         this.worldX = x;
         this.worldY = y;
@@ -27,21 +29,23 @@ public class Slime extends SuperEnemy {
 
     @Override
     public void update() {
-        // setPlayerTracked(20,20);
+        setTrackedArea();
         controllers();
         attack();
     }
 
     private void controllers() {
-        if (gp.player.worldX > worldX) {
-            worldX += speed;
-        } else {
-            worldX -= speed;
-        }
-        if (gp.player.worldY > worldY) {
-            worldY += speed;
-        } else {
-            worldY -= speed;
+        if(isTrackedPlayer) {
+            if (gp.player.worldX > worldX) {
+                worldX += speed;
+            } else {
+                worldX -= speed;
+            }
+            if (gp.player.worldY > worldY) {
+                worldY += speed;
+            } else {
+                worldY -= speed;
+            }
         }
     }
 

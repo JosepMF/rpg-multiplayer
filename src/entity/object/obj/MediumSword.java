@@ -3,7 +3,7 @@ package entity.object.obj;
 import entity.object.SuperObject;
 import main.GamePanel;
 
-public class MediumSword extends SuperObject {
+public class MediumSword extends Sword {
     public MediumSword(int colNumber, int rowNumber, GamePanel gp) {
         this.gp = gp;
         this.name = "medium_sword";
@@ -15,14 +15,6 @@ public class MediumSword extends SuperObject {
         this.width = this.gp.squareSize;
         this.height = this.gp.squareSize;
         this.loadImage("../res/mediumSword.png");
-    }
-    @Override
-    public void action() {
-        for (int i = 0; i <= gp.enemyLoader.enemies.length - 1; i++) {
-            if(gp.enemyLoader.enemies[i] != null) {
-                gp.enemyLoader.enemies[i].liveLevels -= damage;
-            }
-        }
     }
 }
 
