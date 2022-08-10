@@ -25,6 +25,9 @@ public class UI {
         g2.setColor(Color.RED);
         g2.setFont(new Font("Monospaced", Font.BOLD + Font.ITALIC, 40));
         g2.drawString("LV: " + gp.player.liveLevels, 50, 60);
+        g2.setColor(Color.YELLOW);
+        g2.setFont(new Font("Monospaced", Font.BOLD + Font.ITALIC, 40));
+        g2.drawString("Money: " + gp.player.money, 50, 120);
     }
 
     private void gameOverM(Graphics2D g2) {

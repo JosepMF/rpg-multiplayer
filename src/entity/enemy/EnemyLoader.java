@@ -25,6 +25,7 @@ public class EnemyLoader {
                 enemies[i].draw(g2);
                 enemies[i].update();
                 if(enemies[i].liveLevels < 0) {
+                    enemies[i].dropLootEnemy();
                     enemies[i] = null;
                 }
             }

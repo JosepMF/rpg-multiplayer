@@ -1,11 +1,13 @@
 package entity.enemy.enemies;
 
 import entity.enemy.SuperEnemy;
+import entity.object.obj.Apple;
 import main.GamePanel;
 
 import java.awt.*;
 
 public class Slime extends SuperEnemy {
+
     public Slime(GamePanel gp, int x, int y) {
         this.enemyID = 1;
         this.name = "Slime";
@@ -18,6 +20,7 @@ public class Slime extends SuperEnemy {
 
         this.direction = "RIGHT";
 
+
         this.width = this.gp.squareSize;
         this.height = this.gp.squareSize;
 
@@ -25,6 +28,8 @@ public class Slime extends SuperEnemy {
         this.worldY = y;
 
         this.r = new Rectangle(worldX, worldY, width, height);
+
+        this.lootMoney = 3;
     }
 
     @Override

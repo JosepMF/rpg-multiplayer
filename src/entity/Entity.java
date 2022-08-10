@@ -9,6 +9,8 @@ public class Entity {
     public int worldX, worldY;
     public int width, height;
     public Rectangle r;
+    protected int sx;
+    protected int sy;
     public boolean collisionOn = false;
     public String direction = "UP";
     public String preDirection = "UP";

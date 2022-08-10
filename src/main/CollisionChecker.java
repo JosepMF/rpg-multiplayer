@@ -49,6 +49,8 @@ public class CollisionChecker {
                 if (entity.objInventory[i] == null) {
                     entity.objInventory[i] = ol.objectsOnTheWorld[col][row];
                     ol.objectsOnTheWorld[col][row] = null;
+                    ol.loadObjectsOnArray();
+                    System.out.println(ol.objectsOnTheWorld[col][row]);
                     break;
                 } else if (entity.objInventory[entity.objInventory.length - 1] != null) {
                     break;

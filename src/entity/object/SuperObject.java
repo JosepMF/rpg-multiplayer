@@ -41,5 +41,10 @@ public abstract class SuperObject extends Entity {
         }
     }
 
+    protected void update() {
+        worldX = colNumber * gp.colWorldNumber;
+        worldY = rowNumber * gp.rowWorldNumber;
+    }
+
     public abstract void action();
 }

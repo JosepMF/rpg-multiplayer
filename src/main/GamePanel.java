@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWith = colWorldNumber * squareSize;
     public final int worldHeigth = rowWorldNumber * squareSize;
 
-    ObjectLoader objectLoader; // object loader class
+    public ObjectLoader objectLoader; // object loader class
     public CollisionChecker collisionChecker; // collision checker class
     public EnemyLoader enemyLoader;
 

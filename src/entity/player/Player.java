@@ -36,6 +36,8 @@ public class Player extends SuperPlayer implements ActionPlayer {
         this.r = new Rectangle(screenX + width - width / 3, screenY + height / 3, width - width / 3, height - height / 3);
 
         this.objInventory = new SuperObject[20];
+
+        this.money = 0;
     }
 
     @Override
@@ -98,6 +100,8 @@ public class Player extends SuperPlayer implements ActionPlayer {
 
         }
     }
+
+    // wtf
 
     private void collisions() {
         gp.collisionChecker.tilesCollisionController(this);

@@ -40,7 +40,7 @@ public class ObjectLoader {
         objectsOnTheWorld[71][11] = new BasedSword(71, 11, this.gp);
     }
 
-    private void loadObjectsOnArray() {
+    public void loadObjectsOnArray() {
         objects[0] = objectsOnTheWorld[70][8];
         objects[1] = objectsOnTheWorld[70][9];
         objects[2] = objectsOnTheWorld[70][10];
@@ -58,10 +58,15 @@ public class ObjectLoader {
         objects[14] = objectsOnTheWorld[71][11];
     }
 
+    public void setObjectOnArray(SuperObject obj, int index) {
+        objects[index] = obj;
+    }
+
     public void drawObjects(Graphics2D g2) {
         loadObjectsOnArray();
         for (SuperObject obj : objects) {
             if (obj != null) {
+                System.out.println(obj);
                 obj.draw(g2);
             }
         }
