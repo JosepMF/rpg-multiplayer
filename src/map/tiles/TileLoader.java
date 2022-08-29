@@ -21,6 +21,8 @@ public class TileLoader {
 
         this.gp = gp;
 
+        mapTileNum = new int[gp.colWorldNumber][gp.rowWorldNumber];
+
         this.loadTiles();
         this.loadMap();
     }
@@ -28,11 +30,11 @@ public class TileLoader {
     private void loadTiles() {
         try {
             tileArray[0] = new Tile("earth", 1);
-            tileArray[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("")));
+            tileArray[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("../res/earth.png")));
             tileArray[1] = new Tile("grass", 2);
-            tileArray[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("")));
+            tileArray[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("../res/grass.png")));
             tileArray[2] = new Tile("water", 3);
-            tileArray[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("")));
+            tileArray[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("../res/water.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +42,7 @@ public class TileLoader {
 
     private void loadMap() {
         try {
-            InputStream is = getClass().getResourceAsStream("world/map01.txt");
+            InputStream is = getClass().getResourceAsStream("../world/map01.txt");
             assert is != null;
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
@@ -75,15 +77,21 @@ public class TileLoader {
         while (worldCol < gp.colWorldNumber && worldRow < gp.rowWorldNumber) {
             int num = mapTileNum[worldCol][worldRow];
 
+            int playerWX = (int)gp.entityLoader.player.getPositionOnTheWorld().getX();
+            int playerWY = (int)gp.entityLoader.player.getPositionOnTheWorld().getY();
+
+            int playerSX = (int)gp.entityLoader.player.getPositionOnTheScreen().getX();
+            int playerSY = (int)gp.entityLoader.player.getPositionOnTheScreen().getY();
+
             int wx = worldCol * gp.tileSize; // world x
             int wy = worldRow * gp.tileSize; // world y
-            int sx = wx - gp.entityLoader.player.worldX + gp.entityLoader.player.screenX; // screen x
-            int sy = wy - gp.entityLoader.player.worldY + gp.entityLoader.player.screenY; // screen y
+            int sx = wx - playerWX + playerSX; // screen x
+            int sy = wy - playerWY + playerSY; // screen y
 
-            if (wx > gp.entityLoader.player.worldX - gp.entityLoader.player.screenX - gp.tileSize &&
-                    wy > gp.entityLoader.player.worldY - gp.entityLoader.player.screenY - gp.tileSize &&
-                    wx < gp.entityLoader.player.worldX + gp.entityLoader.player.screenX + gp.tileSize * 2 &&
-                    wy < gp.entityLoader.player.worldY + gp.entityLoader.player.screenY + gp.tileSize * 2) {
+            if (wx > playerWX - playerSX - gp.tileSize &&
+                    wy > playerWY - playerSY - gp.tileSize &&
+                    wx < playerWX + playerSX + gp.tileSize * 2 &&
+                    wy < playerWY + playerSY + gp.tileSize * 2) {
                 // tile drawer
                 g2.drawImage(tileArray[num].image, sx, sy, gp.tileSize, gp.tileSize, null);
             }

@@ -17,6 +17,9 @@ public class Player extends Entity {
         // point screen
         this.screenX = (this.gp.WIDTH / 2) - this.width;
         this.screenY = (this.gp.HEIGHT / 2) - this.height;
+
+        // speed
+        this.speed = 7;
     }
 
     @Override
@@ -28,16 +31,16 @@ public class Player extends Entity {
     @Override
     public void update() {
         if(this.gp.kh.w) {
-            System.out.println("up");
+            worldY-=speed;
         }
         if(this.gp.kh.a) {
-            System.out.println("left");
+            worldX-=speed;
         }
         if(this.gp.kh.s) {
-            System.out.println("down");
+            worldY+=speed;
         }
         if(this.gp.kh.d) {
-            System.out.println("right");
+            worldX+=speed;
         }
     }
 }

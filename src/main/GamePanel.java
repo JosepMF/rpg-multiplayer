@@ -1,6 +1,7 @@
 package main;
 
 import entity.EntityLoader;
+import map.tiles.TileLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +32,14 @@ public class GamePanel extends JPanel implements Runnable {
     // key manager
     public KeyHandler kh;
 
+    // collision checker
+    private CollisionChecker collisionChecker;
+
     // entity managers
     public EntityLoader entityLoader;
+
+    // tiles manager
+    TileLoader tileLoader;
 
     // class builder
     public GamePanel() {
@@ -41,6 +48,12 @@ public class GamePanel extends JPanel implements Runnable {
 
         // init key manager
         kh = new KeyHandler();
+
+        // init collision checker
+        collisionChecker = new CollisionChecker(this);
+
+        // init tile loader
+        tileLoader = new TileLoader(this);
 
         // entityLoader
         entityLoader = new EntityLoader(this);
@@ -65,6 +78,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
+        tileLoader.draw(g2);
+
         entityLoader.draw(g2);
 
         g2.dispose();
@@ -88,6 +103,7 @@ public class GamePanel extends JPanel implements Runnable {
             lastTime = currentTime;
 
             if (delta >= 1) {
+                collisionChecker.startCheckCollisions();
                 update();
                 repaint();
                 delta--;

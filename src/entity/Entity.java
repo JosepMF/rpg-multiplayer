@@ -11,17 +11,26 @@ public abstract class Entity {
     // globals variables
     protected GamePanel gp;
 
+    // entity speed
+    protected int speed;
+
     // screen coordinates
-    public int screenX;
-    public int screenY;
+    protected int screenX;
+    protected int screenY;
 
     // world coordinates
-    public int worldX;
-    public int worldY;
+    protected int worldX;
+    protected int worldY;
 
     // entity bounds
     protected int width;
     protected int height;
+
+    // entity settings
+    public int liveLevel;
+    public int damage;
+    public boolean isALive = true;
+    public int curationLiveLevel;
 
     // draw entity
     public abstract void draw(Graphics2D g2);
@@ -32,6 +41,12 @@ public abstract class Entity {
     // get position on the world
     public Point getPositionOnTheWorld() {
         return new Point(worldX, worldY);
+    }
+
+    // set position of the entity on the world
+    public void setPositionOnTheWorld(int col, int row) {
+        this.worldX = (col * gp.tileSize) + width;
+        this.worldY = (row * gp.tileSize) + height;
     }
 
     // get position on the screen
