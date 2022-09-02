@@ -21,7 +21,8 @@ public class Apple extends Entity {
         this.height = gp.tileSize / 2;
 
         // init settings of this entity
-        this.curationLiveLevel = 3;
+        this.entityName = "Apple";
+        this.liveLevel = 1;
 
         // load textures
         loadTextures();
@@ -52,6 +53,6 @@ public class Apple extends Entity {
 
     @Override
     public void update() {
-
+        gp.entityLoader.player.liveLevel += liveLevel;
     }
 }

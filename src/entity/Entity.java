@@ -27,10 +27,12 @@ public abstract class Entity {
     protected int height;
 
     // entity settings
+    public String entityName;
     public int liveLevel;
     public int damage;
+    public int protection;
     public boolean isALive = true;
-    public int curationLiveLevel;
+    public Entity[] inventory;
 
     // draw entity
     public abstract void draw(Graphics2D g2);

@@ -2,6 +2,7 @@ package main;
 
 import entity.EntityLoader;
 import map.tiles.TileLoader;
+import ui.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,10 +42,16 @@ public class GamePanel extends JPanel implements Runnable {
     // tiles manager
     TileLoader tileLoader;
 
+    // UI manager
+    UI ui;
+
     // class builder
     public GamePanel() {
         // init thread game
         gameThread = new Thread(this);
+
+        // init ui
+        ui = new UI(this);
 
         // init key manager
         kh = new KeyHandler();
@@ -81,6 +88,8 @@ public class GamePanel extends JPanel implements Runnable {
         tileLoader.draw(g2);
 
         entityLoader.draw(g2);
+
+        ui.draw(g2);
 
         g2.dispose();
     }

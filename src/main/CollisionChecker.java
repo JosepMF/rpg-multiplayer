@@ -15,8 +15,8 @@ public class CollisionChecker {
     }
 
     public void objectsCollisionsChecker(Entity entity) {
-        int col = (int) entity.getPositionOnTheWorld().getX() / gp.tileSize;
-        int row = (int) entity.getPositionOnTheWorld().getY() / gp.tileSize;
+        int col = (int) (entity.getPositionOnTheWorld().getX() + (entity.getDimensions().width / 2)) / gp.tileSize;
+        int row = (int) (entity.getPositionOnTheWorld().getY() + (entity.getDimensions().height / 2)) / gp.tileSize;
 
         Entity[] objects = gp.entityLoader.objectLoader.objects;
 
@@ -26,7 +26,13 @@ public class CollisionChecker {
                 int rowObject = (int) objects[i].getPositionOnTheWorld().getY() / gp.tileSize;
 
                 if (colObject == col && rowObject == row) {
-                    objects[i] = null;
+                    for(int j = 0; j <= entity.inventory.length - 1; j++) {
+                        if(entity.inventory[i] == null) {
+                            entity.inventory[i] = objects[i];
+                            objects[i] = null;
+                            break;
+                        }
+                    }
                 }
             }
         }

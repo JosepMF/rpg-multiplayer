@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="802cae58-a5e9-4bd9-b8f2-aebd6f0f994e" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/entity/objects/ObjectLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/objects/objects/Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/objects/objects/food/Apple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/CollisionChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/world/map01.txt" afterDir="false" />
+    <list default="true" id="802cae58-a5e9-4bd9-b8f2-aebd6f0f994e" name="Changes" comment="adding objects and objects collision (hay que correguir y mejorar cosas)">
+      <change afterPath="$PROJECT_DIR$/src/ui/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/EntityLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/EntityLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/objects/objects/food/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/objects/objects/food/Apple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CollisionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/tiles/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/tiles/TileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/tiles/TileLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661774163205</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="adding objects and objects collision (hay que correguir y mejorar cosas)">
+      <created>1661787710164</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661787710164</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +114,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="adding objects and objects collision (hay que correguir y mejorar cosas)" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding objects and objects collision (hay que correguir y mejorar cosas)" />
   </component>
 </project>
