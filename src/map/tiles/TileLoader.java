@@ -35,6 +35,7 @@ public class TileLoader {
             tileArray[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("../res/grass.png")));
             tileArray[2] = new Tile("water", 3);
             tileArray[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("../res/water.png")));
+            tileArray[2].collision = true;
         } catch (IOException e) {
             e.printStackTrace();
         }

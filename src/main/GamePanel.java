@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
     public KeyHandler kh;
 
     // collision checker
-    private CollisionChecker collisionChecker;
+    public final CollisionChecker collisionChecker;
 
     // entity managers
     public EntityLoader entityLoader;

@@ -14,6 +14,9 @@ public abstract class Entity {
     // entity speed
     protected int speed;
 
+    // entity direction
+    public String direction = "";
+
     // screen coordinates
     protected int screenX;
     protected int screenY;
@@ -33,6 +36,9 @@ public abstract class Entity {
     public int protection;
     public boolean isALive = true;
     public Entity[] inventory;
+
+    // entity collisions
+    public boolean collisions;
 
     // draw entity
     public abstract void draw(Graphics2D g2);

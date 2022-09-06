@@ -2,6 +2,7 @@ package entity.player;
 
 import entity.Entity;
 import main.GamePanel;
+import utils.Directions;
 
 import java.awt.*;
 
@@ -44,6 +45,7 @@ public class Player extends Entity {
 
     @Override
     public void update() {
+        gp.collisionChecker.tilesCollisionChecker(this);
         control();
         inventoryManager();
     }
@@ -52,21 +54,32 @@ public class Player extends Entity {
     private void control() {
         if (!gp.kh.e) {
             if (this.gp.kh.w) {
-                worldY -= speed;
+                direction = Directions.UP;
             }
             if (this.gp.kh.a) {
-                worldX -= speed;
+                direction = Directions.LEFT;
             }
             if (this.gp.kh.s) {
-                worldY += speed;
+                direction = Directions.DOWN;
             }
             if (this.gp.kh.d) {
-                worldX += speed;
+                direction = Directions.RIGHT;
             }
-            if (counter == 200) {
-                counter = 0;
+
+            if(!collisions) {
+                if(direction.equals(Directions.UP) && this.gp.kh.w) {
+                    worldY -= speed;
+                }
+                if(direction.equals(Directions.DOWN) && this.gp.kh.s) {
+                    worldY += speed;
+                }
+                if(direction.equals(Directions.LEFT) && this.gp.kh.a) {
+                    worldX -= speed;
+                }
+                if(direction.equals(Directions.RIGHT) && this.gp.kh.d) {
+                    worldX += speed;
+                }
             }
-            counter++;
         }
     }
 
